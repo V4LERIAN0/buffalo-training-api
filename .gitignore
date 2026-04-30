@@ -1,0 +1,36 @@
+# Java / Maven
+target/
+*.class
+*.jar
+*.war
+*.ear
+
+# IntelliJ IDEA
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+
+# VS Code
+.vscode/
+
+# Environment / local config
+.env
+*.env
+
+# Logs
+*.log
+logs/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Spring Boot local properties with secrets
+src/main/resources/application-dev.properties
+src/main/resources/application-prod.properties
+
+# Temporary files
+*.tmp
+*.bak
