@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Coach Dashboard - Buffalo Training</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<div class="navbar">
+  <div class="navbar-title">Buffalo Training - Coach Dashboard</div>
+  <div>
+    <span id="userBox"></span>
+    <button id="logoutButton" class="secondary">Logout</button>
+  </div>
+</div>
+
+<div class="container">
+  <h1>Coach Dashboard</h1>
+  <p>Simple dashboard for WOD, reservations, attendance and leaderboard testing.</p>
+
+  <div class="grid">
+    <div class="module-card">
+      <h3>WODs</h3>
+      <p>Create or review WODs.</p>
+      <button disabled>Coming next</button>
+    </div>
+
+    <div class="module-card">
+      <h3>Class Roster</h3>
+      <p>View reservations by class.</p>
+      <button disabled>Coming next</button>
+    </div>
+
+    <div class="module-card">
+      <h3>Attendance</h3>
+      <p>Validate check-ins.</p>
+      <button disabled>Coming next</button>
+    </div>
+
+    <div class="module-card">
+      <h3>Leaderboard</h3>
+      <p>Review athlete scores.</p>
+      <button disabled>Coming next</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/api.js"></script>
+<script src="js/dashboard.js"></script>
+</body>
+</html>
