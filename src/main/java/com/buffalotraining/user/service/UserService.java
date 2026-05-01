@@ -13,6 +13,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.buffalotraining.user.dto.ChangePasswordRequest;
+import com.buffalotraining.user.dto.PasswordUpdateResponse;
+import com.buffalotraining.user.dto.ResetPasswordRequest;
 import java.util.List;
 
 @Service
@@ -112,6 +115,51 @@ public class UserService {
         User updatedUser = userRepository.save(user);
 
         return UserResponse.fromEntity(updatedUser);
+    }
+
+    public PasswordUpdateResponse changePassword(Long userId, ChangePasswordRequest request) {
+        User user = findUserEntityById(userId);
+
+        if (!passwordEncoder.matches(request.getCurrentPassword(), user.getPasswordHash())) {
+            throw new IllegalArgumentException("Current password is incorrect");
+        }
+
+        user.setPasswordHash(passwordEncoder.encode(request.getNewPassword()));
+        User updatedUser = userRepository.save(user);
+
+        return PasswordUpdateResponse.builder()
+                .message("Password changed successfully")
+                .userId(updatedUser.getId())
+                .email(updatedUser.getEmail())
+                .build();
+    }
+
+    public PasswordUpdateResponse resetPassword(Long userId, ResetPasswordRequest request) {
+        User userToUpdate = findUserEntityById(userId);
+
+        User adminUser = userRepository.findById(request.getAdminUserId())
+                .orElseThrow(() -> new IllegalArgumentException("Admin user not found with id: " + request.getAdminUserId()));
+
+        validateAdminUser(adminUser);
+
+        userToUpdate.setPasswordHash(passwordEncoder.encode(request.getNewPassword()));
+        User updatedUser = userRepository.save(userToUpdate);
+
+        return PasswordUpdateResponse.builder()
+                .message("Password reset successfully by admin")
+                .userId(updatedUser.getId())
+                .email(updatedUser.getEmail())
+                .build();
+    }
+
+    private void validateAdminUser(User user) {
+        if (user.getStatus() != UserStatus.ACTIVE) {
+            throw new IllegalArgumentException("Admin user is not active");
+        }
+
+        if (!"ADMIN".equals(user.getRole().getName())) {
+            throw new IllegalArgumentException("Only an admin can reset user passwords");
+        }
     }
 
     private User findUserEntityById(Long id) {

@@ -10,6 +10,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import com.buffalotraining.user.dto.ChangePasswordRequest;
+import com.buffalotraining.user.dto.PasswordUpdateResponse;
+import com.buffalotraining.user.dto.ResetPasswordRequest;
+
 import java.util.List;
 
 @RestController
@@ -49,5 +53,21 @@ public class UserController {
             @Valid @RequestBody UpdateUserStatusRequest request
     ) {
         return userService.updateUserStatus(id, request);
+    }
+
+    @PatchMapping("/{id}/password/change")
+    public PasswordUpdateResponse changePassword(
+            @PathVariable Long id,
+            @Valid @RequestBody ChangePasswordRequest request
+    ) {
+        return userService.changePassword(id, request);
+    }
+
+    @PatchMapping("/{id}/password/reset")
+    public PasswordUpdateResponse resetPassword(
+            @PathVariable Long id,
+            @Valid @RequestBody ResetPasswordRequest request
+    ) {
+        return userService.resetPassword(id, request);
     }
 }
