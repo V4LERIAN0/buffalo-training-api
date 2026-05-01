@@ -119,9 +119,10 @@ document.addEventListener("DOMContentLoaded", () => {
                     <td>${renderRoleBadge(user.roleName)}</td>
                     <td>${renderStatusBadge(user.status)}</td>
                     <td>
-                        <button type="button" onclick="editUser(${user.id})">Edit</button>
-                        ${renderStatusActions(user)}
-                    </td>
+    <button type="button" onclick="editUser(${user.id})">Edit</button>
+    <button type="button" class="secondary" onclick="resetUserPassword(${user.id}, '${user.email}')">Reset Password</button>
+    ${renderStatusActions(user)}
+</td>
                 </tr>
             `).join("");
         } catch (error) {
@@ -181,6 +182,37 @@ document.addEventListener("DOMContentLoaded", () => {
             showError(error.message);
         }
     };
+
+    window.resetUserPassword = async function(userId, email) {
+    clearMessage();
+
+    const currentUser = getCurrentUser();
+
+    const newPassword = prompt(`Enter new temporary password for ${email}:`);
+
+    if (!newPassword) {
+        return;
+    }
+
+    if (newPassword.length < 6) {
+        showError("Password must be at least 6 characters.");
+        return;
+    }
+
+    try {
+        await apiRequest(`/users/${userId}/password/reset`, {
+            method: "PATCH",
+            body: JSON.stringify({
+                adminUserId: currentUser.id,
+                newPassword: newPassword
+            })
+        });
+
+        showSuccess(`Password reset successfully for ${email}.`);
+    } catch (error) {
+        showError(error.message);
+    }
+};
 
     function renderStatusActions(user) {
         if (user.status === "ACTIVE") {
