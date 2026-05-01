@@ -46,14 +46,14 @@ function saveCurrentUser(user) {
 
 function logout() {
     localStorage.removeItem("currentUser");
-    window.location.href = "login.html";
+    window.location.href = "../login.html";
 }
 
 function requireAuth() {
     const user = getCurrentUser();
 
     if (!user) {
-        window.location.href = "login.html";
+        window.location.href = "../login.html";
         return null;
     }
 
@@ -62,11 +62,11 @@ function requireAuth() {
 
 function redirectByRole(user) {
     if (user.roleName === "ADMIN") {
-        window.location.href = "admin-dashboard.html";
+        window.location.href = "admin/dashboard.html";
     } else if (user.roleName === "COACH") {
-        window.location.href = "coach-dashboard.html";
+        window.location.href = "coach/dashboard.html";
     } else if (user.roleName === "ATHLETE") {
-        window.location.href = "athlete-dashboard.html";
+        window.location.href = "athlete/dashboard.html";
     } else {
         alert("Unknown role: " + user.roleName);
     }

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Users - Buffalo Training</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body>
+
+<div class="navbar">
+    <div class="navbar-title">Buffalo Training - Users</div>
+    <div>
+        <span id="userBox"></span>
+        <button id="logoutButton" class="secondary">Logout</button>
+    </div>
+</div>
+
+<div class="container">
+    <h1>User Management</h1>
+    <p>Create, edit, activate, suspend, and review users.</p>
+
+    <div class="card">
+        <h2 id="formTitle">Create User</h2>
+
+        <form id="userForm">
+            <input type="hidden" id="editingUserId">
+
+            <label for="firstName">First name</label>
+            <input type="text" id="firstName" required>
+
+            <label for="lastName">Last name</label>
+            <input type="text" id="lastName" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" required>
+
+            <label for="phone">Phone</label>
+            <input type="text" id="phone">
+
+            <div id="passwordGroup">
+                <label for="password">Password</label>
+                <input type="password" id="password">
+                <small>Password is required only when creating a new user.</small>
+            </div>
+
+            <div id="roleGroup">
+                <label for="roleName">Role</label>
+                <select id="roleName">
+                    <option value="">Select role</option>
+                    <option value="ADMIN">ADMIN</option>
+                    <option value="COACH">COACH</option>
+                    <option value="ATHLETE">ATHLETE</option>
+                </select>
+            </div>
+
+            <label for="gender">Gender</label>
+            <select id="gender">
+                <option value="">Not specified</option>
+                <option value="MALE">MALE</option>
+                <option value="FEMALE">FEMALE</option>
+            </select>
+
+            <label for="profilePhotoUrl">Profile photo URL</label>
+            <input type="text" id="profilePhotoUrl">
+
+            <button type="submit" id="submitButton">Create User</button>
+            <button type="button" id="cancelEditButton" class="secondary" style="display:none;">Cancel Edit</button>
+        </form>
+
+        <div id="userFormMessage"></div>
+    </div>
+
+    <div class="card">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <h2>Users</h2>
+            <button id="refreshUsersButton" class="secondary">Refresh</button>
+        </div>
+
+        <table>
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Full name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Role</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody id="usersTableBody"></tbody>
+        </table>
+    </div>
+
+    <p>
+        <a href="dashboard.html">← Back to dashboard</a>
+    </p>
+</div>
+
+<script src="../../js/api.js"></script>
+<script src="../../js/dashboard.js"></script>
+<script src="../../js/admin/users.js"></script>
+</body>
+</html>
