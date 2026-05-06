@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Buffalo Training - WOD Management</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body>
+    <header class="app-header">
+        <div>
+            <h1>WOD Management</h1>
+            <p>Create, edit, publish, and archive daily workouts.</p>
+        </div>
+
+        <nav class="header-actions">
+            <a href="dashboard.html">Admin Dashboard</a>
+            <a href="../coach/dashboard.html">Coach Dashboard</a>
+            <a href="../change-password.html">Change Password</a>
+            <button id="logoutBtn" type="button">Logout</button>
+        </nav>
+    </header>
+
+    <main class="page-container">
+        <section class="card">
+            <div class="section-header">
+                <div>
+                    <h2 id="formTitle">Create WOD</h2>
+                    <p>General workout information and daily structure.</p>
+                </div>
+
+                <button id="resetFormBtn" type="button" class="secondary-btn">
+                    Clear Form
+                </button>
+            </div>
+
+            <form id="wodForm" class="form-grid">
+                <input type="hidden" id="wodId">
+
+                <div class="form-group">
+                    <label for="title">Title *</label>
+                    <input type="text" id="title" required placeholder="Example: Monday Engine Builder">
+                </div>
+
+                <div class="form-group">
+                    <label for="wodDate">WOD Date *</label>
+                    <input type="date" id="wodDate" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="wodType">WOD Type *</label>
+                    <select id="wodType" required>
+                        <option value="AMRAP">AMRAP</option>
+                        <option value="EMOM">EMOM</option>
+                        <option value="FOR_TIME">FOR_TIME</option>
+                        <option value="STRENGTH">STRENGTH</option>
+                        <option value="INTERVAL">INTERVAL</option>
+                        <option value="CHIPPER">CHIPPER</option>
+                        <option value="TABATA">TABATA</option>
+                        <option value="OTHER">OTHER</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="status">Status *</label>
+                    <select id="status" required>
+                        <option value="DRAFT">DRAFT</option>
+                        <option value="PUBLISHED">PUBLISHED</option>
+                        <option value="ARCHIVED">ARCHIVED</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="createdByUserId">Created By User ID *</label>
+                    <input type="number" id="createdByUserId" required placeholder="Admin/Coach user ID">
+                </div>
+
+                <div class="form-group full-width">
+                    <label for="description">Description</label>
+                    <textarea id="description" rows="3" placeholder="General notes about the workout"></textarea>
+                </div>
+
+                <div class="form-group full-width">
+                    <label for="warmUp">Warm Up</label>
+                    <textarea id="warmUp" rows="4" placeholder="Example: 3 rounds: 10 air squats, 10 ring rows, 200m jog"></textarea>
+                </div>
+
+                <div class="form-group full-width">
+                    <label for="skillOrStrength">Skill / Strength</label>
+                    <textarea id="skillOrStrength" rows="4" placeholder="Example: Back Squat 5x5 building"></textarea>
+                </div>
+
+                <div class="form-group full-width">
+                    <label for="videoUrl">Video URL</label>
+                    <input type="url" id="videoUrl" placeholder="https://youtube.com/...">
+                </div>
+
+                <div class="form-group full-width">
+                    <label for="movementNotes">Movement Notes</label>
+                    <textarea id="movementNotes" rows="3" placeholder="Technique notes, scaling ideas, safety reminders"></textarea>
+                </div>
+
+                <div class="full-width variants-container">
+                    <div class="section-header compact">
+                        <div>
+                            <h3>Variants</h3>
+                            <p>Leaderboard categories: Male/Female + RX/Scaled.</p>
+                        </div>
+                    </div>
+
+                    <div id="variantsGrid" class="variants-grid"></div>
+                </div>
+
+                <div class="form-actions full-width">
+                    <button type="submit" class="primary-btn" id="saveWodBtn">
+                        Save WOD
+                    </button>
+
+                    <button type="button" class="secondary-btn" id="reloadWodsBtn">
+                        Reload List
+                    </button>
+                </div>
+            </form>
+        </section>
+
+        <section class="card">
+            <div class="section-header">
+                <div>
+                    <h2>WOD List</h2>
+                    <p>All created workouts. Drafts, published WODs, and archived WODs appear here.</p>
+                </div>
+
+                <div class="filters">
+                    <select id="statusFilter">
+                        <option value="ALL">All statuses</option>
+                        <option value="DRAFT">Draft</option>
+                        <option value="PUBLISHED">Published</option>
+                        <option value="ARCHIVED">Archived</option>
+                    </select>
+
+                    <input type="date" id="dateFilter">
+                </div>
+            </div>
+
+            <div id="messageBox" class="message-box hidden"></div>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Title</th>
+                            <th>Type</th>
+                            <th>Status</th>
+                            <th>Variants</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="wodsTableBody">
+                        <tr>
+                            <td colspan="6">Loading WODs...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <script src="../../js/api.js"></script>
+    <script src="../../js/dashboard.js"></script>
+    <script src="../../js/admin/wods.js"></script>
+</body>
+</html>
