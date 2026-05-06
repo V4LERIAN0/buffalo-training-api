@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Membership Plans - Buffalo Training</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body>
+
+<div class="navbar">
+    <div class="navbar-title">Buffalo Training - Membership Plans</div>
+    <div>
+        <span id="userBox"></span>
+        <button id="logoutButton" class="secondary">Logout</button>
+    </div>
+</div>
+
+<div class="container">
+    <h1>Membership Plans</h1>
+    <p>Create, edit, activate, and deactivate the plans sold by Buffalo Training.</p>
+
+    <div class="card">
+        <h2 id="formTitle">Create Membership Plan</h2>
+
+        <form id="membershipPlanForm">
+            <input type="hidden" id="editingPlanId">
+
+            <label for="name">Plan name</label>
+            <input type="text" id="name" required placeholder="Plan mensual">
+
+            <label for="description">Description</label>
+            <textarea id="description" rows="3" placeholder="Standard monthly membership"></textarea>
+
+            <label for="price">Price</label>
+            <input type="number" id="price" step="0.01" min="0.01" required placeholder="35.00">
+
+            <label for="durationDays">Duration days</label>
+            <input type="number" id="durationDays" min="1" required value="30">
+
+            <label for="billingCycle">Billing cycle</label>
+            <select id="billingCycle" required>
+                <option value="">Select billing cycle</option>
+                <option value="MONTHLY">MONTHLY</option>
+                <option value="DAY_BASED">DAY_BASED</option>
+            </select>
+
+            <label for="gracePeriodDays">Grace period days</label>
+            <input type="number" id="gracePeriodDays" min="0" required value="3">
+
+            <button type="submit" id="submitButton">Create Plan</button>
+            <button type="button" id="cancelEditButton" class="secondary" style="display:none;">Cancel Edit</button>
+        </form>
+
+        <div id="planFormMessage"></div>
+    </div>
+
+    <div class="card">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <h2>Plans</h2>
+            <button id="refreshPlansButton" class="secondary">Refresh</button>
+        </div>
+
+        <table>
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Plan</th>
+                <th>Price</th>
+                <th>Duration</th>
+                <th>Billing</th>
+                <th>Grace</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody id="plansTableBody"></tbody>
+        </table>
+    </div>
+
+    <p>
+        <a href="dashboard.html">← Back to dashboard</a>
+    </p>
+</div>
+
+<script src="../../js/api.js"></script>
+<script src="../../js/dashboard.js"></script>
+<script src="../../js/admin/membership-plans.js"></script>
+</body>
+</html>
