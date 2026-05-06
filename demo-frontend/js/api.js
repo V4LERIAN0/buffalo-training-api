@@ -44,16 +44,30 @@ function saveCurrentUser(user) {
     localStorage.setItem("currentUser", JSON.stringify(user));
 }
 
+function getLoginPath() {
+    const path = window.location.pathname.replaceAll("\\", "/");
+
+    if (path.includes("/pages/admin/") || path.includes("/pages/coach/") || path.includes("/pages/athlete/")) {
+        return "../login.html";
+    }
+
+    if (path.includes("/pages/")) {
+        return "login.html";
+    }
+
+    return "pages/login.html";
+}
+
 function logout() {
     localStorage.removeItem("currentUser");
-    window.location.href = "../login.html";
+    window.location.href = getLoginPath();
 }
 
 function requireAuth() {
     const user = getCurrentUser();
 
     if (!user) {
-        window.location.href = "../login.html";
+        window.location.href = getLoginPath();
         return null;
     }
 

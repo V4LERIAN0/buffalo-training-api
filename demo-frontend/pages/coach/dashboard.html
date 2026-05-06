@@ -5,16 +5,9 @@
   <title>Coach Dashboard - Buffalo Training</title>
   <link rel="stylesheet" href="../../css/styles.css">
 </head>
-<body>
+<body data-page-title="Buffalo Training - Coach Dashboard">
 
-<div class="navbar">
-  <div class="navbar-title">Buffalo Training - Coach Dashboard</div>
-  <div>
-    <span id="userBox"></span>
-    <button id="logoutButton" class="secondary">Logout</button>
-  </div>
-</div>
-
+<div id="navbarMount"></div>
 <div class="container">
   <h1>Coach Dashboard</h1>
   <p>Simple dashboard for WOD, reservations, attendance and leaderboard testing.</p>
@@ -24,7 +17,7 @@
       <h3>WODs</h3>
       <p>Create or review WODs.</p>
       <a href="../admin/wods.html">
-      <button disabled>Coming next</button>
+      <button>Open WODs</button>
       </a>
     </div>
 
@@ -57,6 +50,7 @@
 </div>
 
 <script src="../../js/api.js"></script>
+<script src="../../js/navbar.js"></script>
 <script src="../../js/dashboard.js"></script>
 </body>
 </html>

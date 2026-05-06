@@ -5,16 +5,9 @@
     <title>Memberships & Payments - Buffalo Training</title>
     <link rel="stylesheet" href="../../css/styles.css">
 </head>
-<body>
+<body data-page-title="Buffalo Training - Memberships & Payments">
 
-<div class="navbar">
-    <div class="navbar-title">Buffalo Training - Memberships & Payments</div>
-    <div>
-        <span id="userBox"></span>
-        <button id="logoutButton" class="secondary">Logout</button>
-    </div>
-</div>
-
+<div id="navbarMount"></div>
 <div class="container">
     <h1>Memberships & Payments</h1>
     <p>Assign memberships, register payments, and review payment history.</p>
@@ -32,12 +25,12 @@
         <div id="athleteMessage"></div>
     </div>
 
-    <div class="card" id="membershipCard" style="display:none;">
+    <div class="card hidden" id="membershipCard">
         <h2>Active Membership</h2>
         <div id="activeMembershipBox"></div>
     </div>
 
-    <div class="card" id="assignMembershipCard" style="display:none;">
+    <div class="card hidden" id="assignMembershipCard">
         <h2>Assign Membership</h2>
 
         <form id="assignMembershipForm">
@@ -58,7 +51,7 @@
         <div id="assignMembershipMessage"></div>
     </div>
 
-    <div class="card" id="paymentCard" style="display:none;">
+    <div class="card hidden" id="paymentCard">
         <h2>Register Payment</h2>
 
         <form id="paymentForm">
@@ -90,8 +83,8 @@
         <div id="paymentMessage"></div>
     </div>
 
-    <div class="card" id="paymentHistoryCard" style="display:none;">
-        <div style="display:flex; justify-content:space-between; align-items:center;">
+    <div class="card hidden" id="paymentHistoryCard">
+        <div class="card-header">
             <h2>Payment History</h2>
             <button type="button" id="refreshPaymentsButton" class="secondary">Refresh</button>
         </div>
@@ -118,6 +111,7 @@
 </div>
 
 <script src="../../js/api.js"></script>
+<script src="../../js/navbar.js"></script>
 <script src="../../js/dashboard.js"></script>
 <script src="../../js/admin/memberships.js"></script>
 </body>

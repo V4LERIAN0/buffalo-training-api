@@ -5,16 +5,9 @@
     <title>Users - Buffalo Training</title>
     <link rel="stylesheet" href="../../css/styles.css">
 </head>
-<body>
+<body data-page-title="Buffalo Training - Users">
 
-<div class="navbar">
-    <div class="navbar-title">Buffalo Training - Users</div>
-    <div>
-        <span id="userBox"></span>
-        <button id="logoutButton" class="secondary">Logout</button>
-    </div>
-</div>
-
+<div id="navbarMount"></div>
 <div class="container">
     <h1>User Management</h1>
     <p>Create, edit, activate, suspend, and review users.</p>
@@ -64,14 +57,14 @@
             <input type="text" id="profilePhotoUrl">
 
             <button type="submit" id="submitButton">Create User</button>
-            <button type="button" id="cancelEditButton" class="secondary" style="display:none;">Cancel Edit</button>
+            <button type="button" id="cancelEditButton" class="secondary" class="hidden">Cancel Edit</button>
         </form>
 
         <div id="userFormMessage"></div>
     </div>
 
     <div class="card">
-        <div style="display: flex; justify-content: space-between; align-items: center;">
+        <div class="card-header">
             <h2>Users</h2>
             <button id="refreshUsersButton" class="secondary">Refresh</button>
         </div>
@@ -98,6 +91,7 @@
 </div>
 
 <script src="../../js/api.js"></script>
+<script src="../../js/navbar.js"></script>
 <script src="../../js/dashboard.js"></script>
 <script src="../../js/admin/users.js"></script>
 </body>
