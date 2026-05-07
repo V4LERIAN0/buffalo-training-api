@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Leaderboard - Buffalo Training</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body data-page-title="Buffalo Training - Leaderboard">
+
+<div id="navbarMount"></div>
+
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <div>
+                <h1>WOD Leaderboard</h1>
+                <p>Select a published WOD and variant to view rankings or submit your score.</p>
+            </div>
+
+            <div class="inline-actions">
+                <input type="date" id="wodDateInput">
+                <button id="loadWodButton" class="secondary">Load WOD</button>
+                <a href="wod.html">
+                    <button type="button" class="secondary">View WOD</button>
+                </a>
+            </div>
+        </div>
+
+        <div id="messageBox" class="message hidden"></div>
+
+        <div id="wodSummary" class="empty-state">
+            <p>Loading today’s published WOD...</p>
+        </div>
+    </div>
+
+    <div class="card hidden" id="leaderboardCard">
+        <div class="card-header">
+            <div>
+                <h2>Leaderboard</h2>
+                <p id="leaderboardSubtitle">Select a variant.</p>
+            </div>
+
+            <div class="inline-actions">
+                <select id="variantSelect"></select>
+                <button id="submitScoreButton" type="button">Submit Score</button>
+            </div>
+        </div>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Athlete</th>
+                    <th>Score</th>
+                    <th>Status</th>
+                    <th>Notes</th>
+                </tr>
+                </thead>
+                <tbody id="leaderboardBody">
+                <tr>
+                    <td colspan="5">No leaderboard loaded.</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div id="scoreModal" class="modal-overlay hidden" aria-hidden="true">
+    <div class="modal-card">
+        <div class="card-header">
+            <div>
+                <h2>Submit Score</h2>
+                <p id="scoreModalSubtitle">Select a variant first.</p>
+            </div>
+
+            <button id="closeScoreModalButton" type="button" class="secondary">Close</button>
+        </div>
+
+        <form id="scoreForm">
+            <div id="scoreFieldsContainer">
+                <p class="helper-text">Score fields will appear after selecting a variant.</p>
+            </div>
+
+            <div class="form-group">
+                <label for="scoreNotes">Notes</label>
+                <textarea id="scoreNotes" rows="3" placeholder="Optional notes about scaling, tie break, weight used, etc."></textarea>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit">Save Score</button>
+                <button type="button" id="cancelScoreModalButton" class="secondary">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="../../js/api.js"></script>
+<script src="../../js/navbar.js"></script>
+<script src="../../js/dashboard.js"></script>
+<script src="../../js/athlete/leaderboard.js"></script>
+</body>
+</html>
