@@ -35,6 +35,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const paymentsTableBody = document.getElementById("paymentsTableBody");
     const refreshPaymentsButton = document.getElementById("refreshPaymentsButton");
 
+    function showElement(element) {
+        element.classList.remove("hidden");
+    }
+
+    function hideElement(element) {
+        element.classList.add("hidden");
+    }
+
     initializeDefaults();
     loadAthletes();
     loadActivePlans();
@@ -113,7 +121,7 @@ document.addEventListener("DOMContentLoaded", () => {
             await loadActiveMembership();
             await loadPaymentHistory();
 
-            paymentHistoryCard.style.display = "block";
+            showElement(paymentHistoryCard);
         } catch (error) {
             showMessage(athleteMessage, error.message, "error");
         }
@@ -125,18 +133,18 @@ document.addEventListener("DOMContentLoaded", () => {
         try {
             activeMembership = await apiRequest(`/memberships/athlete/${selectedAthlete.id}/active`);
 
-            membershipCard.style.display = "block";
-            assignMembershipCard.style.display = "none";
-            paymentCard.style.display = "block";
+            showElement(membershipCard);
+            hideElement(assignMembershipCard);
+            showElement(paymentCard);
 
             renderActiveMembership(activeMembership);
 
             document.getElementById("amount").value = Number(activeMembership.planPrice).toFixed(2);
 
         } catch (error) {
-            membershipCard.style.display = "block";
-            paymentCard.style.display = "none";
-            assignMembershipCard.style.display = "block";
+            showElement(membershipCard);
+            hideElement(paymentCard);
+            showElement(assignMembershipCard);
 
             activeMembershipBox.innerHTML = `
                 <p class="error">No active membership found for this athlete.</p>
@@ -241,7 +249,7 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        paymentHistoryCard.style.display = "block";
+        showElement(paymentHistoryCard);
 
         paymentsTableBody.innerHTML = `
             <tr>

@@ -219,6 +219,160 @@ button.small-button {
     display: none;
 }
 
+.helper-text {
+    font-size: 13px;
+    color: #6b7280;
+    margin-top: -4px;
+}
+
+.inline-actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.inline-actions input {
+    max-width: 180px;
+}
+
+.inline-actions input,
+.inline-actions select {
+    max-width: 220px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 6px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+}
+
+.full-width {
+    grid-column: 1 / -1;
+}
+
+.form-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.badge {
+    display: inline-block;
+    padding: 4px 9px;
+    border-radius: 999px;
+    background: #eeeeee;
+    color: #333333;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-right: 4px;
+}
+
+.badge.success {
+    background: #dff6e5;
+    color: #1d6b34;
+}
+
+.info-section {
+    margin: 16px 0;
+}
+
+.info-section h3,
+.info-section h4 {
+    margin-bottom: 6px;
+}
+
+.variant-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.variant-card {
+    border: 1px solid #dddddd;
+    border-radius: 12px;
+    padding: 16px;
+    background: #fafafa;
+}
+
+.compact-variant-card {
+    margin-bottom: 0;
+}
+
+.table-wrapper {
+    overflow-x: auto;
+}
+
+.empty-state {
+    padding: 20px;
+    border: 1px dashed #cccccc;
+    border-radius: 12px;
+    text-align: center;
+    background: #f9fafb;
+}
+
+.message {
+    padding: 12px 14px;
+    border-radius: 10px;
+    margin: 14px 0;
+    font-weight: bold;
+}
+
+
+.message.success {
+    background: #dff6e5;
+    color: #1d6b34;
+}
+
+.message.error {
+    background: #ffe0e0;
+    color: #8a0000;
+}
+
+.message.info {
+    background: #e7f1ff;
+    color: #0b4f9c;
+}
+
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(17, 24, 39, 0.65);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    z-index: 999;
+}
+
+.modal-card {
+    width: min(560px, 100%);
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 22px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+}
+
+@media (max-width: 800px) {
+    .form-grid,
+    .variant-list {
+        grid-template-columns: 1fr;
+    }
+}
+
 @media (max-width: 700px) {
     .navbar {
         flex-direction: column;
@@ -229,4 +383,57 @@ button.small-button {
     .card-header {
         align-items: flex-start;
     }
+}
+
+.hidden {
+    display: none !important;
+}
+
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.68);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 24px;
+    z-index: 9999;
+}
+
+.modal-card {
+    width: min(620px, 95vw);
+    max-height: 90vh;
+    overflow-y: auto;
+    background: #ffffff;
+    color: #111827;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+}
+
+.modal-card .card-header {
+    margin-bottom: 16px;
+}
+
+.helper-text {
+    font-size: 13px;
+    color: #6b7280;
+    margin-top: 4px;
+}
+
+.form-group {
+    margin-bottom: 14px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+.form-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 18px;
 }
