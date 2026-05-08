@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Membership - Buffalo Training</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body data-page-title="Buffalo Training - My Membership">
+
+<div id="navbarMount"></div>
+
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <div>
+                <h1>My Membership</h1>
+                <p>Check your membership status, due date and payment history.</p>
+            </div>
+
+            <button id="reloadButton" type="button" class="secondary">Reload</button>
+        </div>
+
+        <div id="messageBox" class="message hidden"></div>
+
+        <div id="membershipContent">
+            <p>Loading membership...</p>
+        </div>
+    </div>
+
+    <div class="card hidden" id="paymentActionCard">
+        <div class="card-header">
+            <div>
+                <h2>Payment Options</h2>
+                <p>Request a Wompi payment link from the gym owner.</p>
+            </div>
+        </div>
+
+        <div class="payment-action-box">
+            <p>
+                For now, online payments are handled manually. Click the button below to open WhatsApp with a prewritten message asking for a Wompi payment link.
+            </p>
+
+            <button id="requestWompiButton" type="button">
+                Request Wompi Payment Link
+            </button>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <div>
+                <h2>Payment History</h2>
+                <p>Your registered membership payments.</p>
+            </div>
+
+            <button id="reloadPaymentsButton" type="button" class="secondary">Reload Payments</button>
+        </div>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Amount</th>
+                    <th>Method</th>
+                    <th>Status</th>
+                    <th>Reference</th>
+                    <th>Notes</th>
+                </tr>
+                </thead>
+                <tbody id="paymentsTableBody">
+                <tr>
+                    <td colspan="6">Loading payments...</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script src="../../js/api.js"></script>
+<script src="../../js/navbar.js"></script>
+<script src="../../js/dashboard.js"></script>
+<script src="../../js/athlete/membership.js"></script>
+</body>
+</html>
