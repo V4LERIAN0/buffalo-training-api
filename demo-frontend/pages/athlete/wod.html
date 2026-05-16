@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Today’s WOD - Buffalo Training</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body data-page-title="Buffalo Training - Today’s WOD">
+
+<div id="navbarMount"></div>
+
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <div>
+                <h1>Today’s WOD</h1>
+                <p>View the published workout and its variants.</p>
+            </div>
+
+            <div class="inline-actions">
+                <input type="date" id="wodDateInput">
+                <button id="loadWodButton" class="secondary">Load WOD</button>
+                <a href="leaderboard.html">
+                    <button type="button">Go to Leaderboard</button>
+                </a>
+            </div>
+        </div>
+
+        <div id="messageBox" class="message hidden"></div>
+
+        <div id="wodContent">
+            <p>Loading WOD...</p>
+        </div>
+    </div>
+</div>
+
+<script src="../../js/api.js"></script>
+<script src="../../js/navbar.js"></script>
+<script src="../../js/dashboard.js"></script>
+<script src="../../js/athlete/wod.js"></script>
+</body>
+</html>

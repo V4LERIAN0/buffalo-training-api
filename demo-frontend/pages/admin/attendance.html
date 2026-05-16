@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Attendance - Buffalo Training</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body data-page-title="Buffalo Training - Attendance">
+
+<div id="navbarMount"></div>
+
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <div>
+                <h1>Attendance Management</h1>
+                <p>View, validate and manually register attendance for class sessions.</p>
+            </div>
+
+            <div class="inline-actions">
+                <input type="date" id="classDateFilter">
+                <button id="loadClassesButton" type="button" class="secondary">Load Classes</button>
+            </div>
+        </div>
+
+        <div id="messageBox" class="message hidden"></div>
+
+        <div class="form-group">
+            <label for="classSessionSelect">Class Session</label>
+            <select id="classSessionSelect">
+                <option value="">Load classes first</option>
+            </select>
+        </div>
+
+        <div class="form-actions">
+            <button id="loadAttendanceButton" type="button">Load Attendance</button>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <div>
+                <h2>Attendance Records</h2>
+                <p id="selectedClassText">No class selected.</p>
+            </div>
+
+            <button id="reloadAttendanceButton" type="button" class="secondary">Reload Attendance</button>
+        </div>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                <tr>
+                    <th>Athlete</th>
+                    <th>Class</th>
+                    <th>Check-in Time</th>
+                    <th>Method</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody id="attendanceTableBody">
+                <tr>
+                    <td colspan="6">Select a class session to load attendance.</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <div>
+                <h2>Manual Attendance</h2>
+                <p>Register attendance when an athlete arrived without a reservation or had an exception.</p>
+            </div>
+        </div>
+
+        <form id="manualAttendanceForm" class="form-grid">
+            <div class="form-group">
+                <label for="manualClassSessionId">Class Session</label>
+                <select id="manualClassSessionId" required>
+                    <option value="">Load classes first</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="manualAthleteId">Athlete</label>
+                <select id="manualAthleteId" required>
+                    <option value="">Loading athletes...</option>
+                </select>
+            </div>
+
+            <div class="form-group full-width">
+                <label for="manualNotes">Notes</label>
+                <textarea id="manualNotes" rows="3" placeholder="Example: Athlete arrived but forgot to reserve."></textarea>
+            </div>
+
+            <div class="form-actions full-width">
+                <button type="submit">Register Manual Attendance</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="../../js/api.js"></script>
+<script src="../../js/navbar.js"></script>
+<script src="../../js/dashboard.js"></script>
+<script src="../../js/admin/attendance.js"></script>
+</body>
+</html>

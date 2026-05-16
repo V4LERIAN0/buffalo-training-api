@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Memberships & Payments - Buffalo Training</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body data-page-title="Buffalo Training - Memberships & Payments">
+
+<div id="navbarMount"></div>
+<div class="container">
+    <h1>Memberships & Payments</h1>
+    <p>Assign memberships, register payments, and review payment history.</p>
+
+    <div class="card">
+        <h2>Select Athlete</h2>
+
+        <label for="athleteSelect">Athlete</label>
+        <select id="athleteSelect">
+            <option value="">Loading athletes...</option>
+        </select>
+
+        <button type="button" id="loadAthleteButton">Load Athlete</button>
+
+        <div id="athleteMessage"></div>
+    </div>
+
+    <div class="card hidden" id="membershipCard">
+        <h2>Active Membership</h2>
+        <div id="activeMembershipBox"></div>
+    </div>
+
+    <div class="card hidden" id="assignMembershipCard">
+        <h2>Assign Membership</h2>
+
+        <form id="assignMembershipForm">
+            <label for="planSelect">Membership Plan</label>
+            <select id="planSelect" required>
+                <option value="">Loading plans...</option>
+            </select>
+
+            <label for="startDate">Start Date</label>
+            <input type="date" id="startDate" required>
+
+            <label for="membershipNotes">Notes</label>
+            <textarea id="membershipNotes" rows="3"></textarea>
+
+            <button type="submit">Assign Membership</button>
+        </form>
+
+        <div id="assignMembershipMessage"></div>
+    </div>
+
+    <div class="card hidden" id="paymentCard">
+        <h2>Register Payment</h2>
+
+        <form id="paymentForm">
+            <label for="amount">Amount</label>
+            <input type="number" id="amount" step="0.01" min="0.01" required>
+
+            <label for="paymentDate">Payment Date</label>
+            <input type="date" id="paymentDate" required>
+
+            <label for="paymentMethod">Payment Method</label>
+            <select id="paymentMethod" required>
+                <option value="">Select method</option>
+                <option value="CASH">CASH</option>
+                <option value="BANK_TRANSFER">BANK_TRANSFER</option>
+                <option value="CARD">CARD</option>
+                <option value="WOMPI_LINK">WOMPI_LINK</option>
+                <option value="OTHER">OTHER</option>
+            </select>
+
+            <label for="referenceCode">Reference Code</label>
+            <input type="text" id="referenceCode" placeholder="REC-0001 / WOMPI-123 / TRX-123">
+
+            <label for="paymentNotes">Notes</label>
+            <textarea id="paymentNotes" rows="3"></textarea>
+
+            <button type="submit">Register Payment</button>
+        </form>
+
+        <div id="paymentMessage"></div>
+    </div>
+
+    <div class="card hidden" id="paymentHistoryCard">
+        <div class="card-header">
+            <h2>Payment History</h2>
+            <button type="button" id="refreshPaymentsButton" class="secondary">Refresh</button>
+        </div>
+
+        <table>
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Date</th>
+                <th>Amount</th>
+                <th>Method</th>
+                <th>Status</th>
+                <th>Reference</th>
+                <th>Registered By</th>
+            </tr>
+            </thead>
+            <tbody id="paymentsTableBody"></tbody>
+        </table>
+    </div>
+
+    <p>
+        <a href="dashboard.html">← Back to dashboard</a>
+    </p>
+</div>
+
+<script src="../../js/api.js"></script>
+<script src="../../js/navbar.js"></script>
+<script src="../../js/dashboard.js"></script>
+<script src="../../js/admin/memberships.js"></script>
+</body>
+</html>

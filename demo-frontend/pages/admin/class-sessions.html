@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Class Sessions - Buffalo Training</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body data-page-title="Buffalo Training - Class Sessions">
+
+<div id="navbarMount"></div>
+
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <div>
+                <h1 id="formTitle">Create Class Session</h1>
+                <p>Create schedules, assign coaches and manage capacity.</p>
+            </div>
+
+            <button id="clearFormButton" type="button" class="secondary">Clear Form</button>
+        </div>
+
+        <div id="messageBox" class="message hidden"></div>
+
+        <form id="classSessionForm" class="form-grid">
+            <input type="hidden" id="classSessionId">
+
+            <div class="form-group">
+                <label for="className">Class Name</label>
+                <input type="text" id="className" required maxlength="80" placeholder="Example: CrossFit Class">
+            </div>
+
+            <div class="form-group">
+                <label for="classDate">Class Date</label>
+                <input type="date" id="classDate" required>
+            </div>
+
+            <div class="form-group">
+                <label for="startTime">Start Time</label>
+                <input type="time" id="startTime" required>
+            </div>
+
+            <div class="form-group">
+                <label for="endTime">End Time</label>
+                <input type="time" id="endTime" required>
+            </div>
+
+            <div class="form-group">
+                <label for="capacity">Capacity</label>
+                <input type="number" id="capacity" min="1" step="1" required placeholder="Example: 15">
+            </div>
+
+            <div class="form-group">
+                <label for="coachId">Coach</label>
+                <select id="coachId" required>
+                    <option value="">Loading coaches...</option>
+                </select>
+            </div>
+
+            <div class="form-group full-width">
+                <label for="description">Description</label>
+                <input type="text" id="description" maxlength="255" placeholder="Optional class description">
+            </div>
+
+            <div class="form-group full-width">
+                <label for="notes">Notes</label>
+                <textarea id="notes" rows="3" maxlength="255" placeholder="Optional notes for this class"></textarea>
+            </div>
+
+            <div class="form-actions full-width">
+                <button type="submit">Save Class Session</button>
+                <button type="button" id="reloadButton" class="secondary">Reload List</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <div>
+                <h2>Class Sessions</h2>
+                <p>Filter sessions by date and manage their status.</p>
+            </div>
+
+            <div class="inline-actions">
+                <input type="date" id="filterDate">
+                <button id="filterDateButton" type="button" class="secondary">Load Date</button>
+                <button id="loadAllButton" type="button" class="secondary">Load All</button>
+            </div>
+        </div>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Class</th>
+                    <th>Coach</th>
+                    <th>Capacity</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody id="classSessionsTableBody">
+                <tr>
+                    <td colspan="7">Loading class sessions...</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="card hidden" id="reservationsCard">
+        <div class="card-header">
+            <div>
+                <h2 id="reservationsTitle">Class Reservations</h2>
+                <p>Reservations for the selected class session.</p>
+            </div>
+
+            <button id="closeReservationsButton" type="button" class="secondary">Close</button>
+        </div>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                <tr>
+                    <th>Athlete</th>
+                    <th>Email</th>
+                    <th>Status</th>
+                    <th>Reserved At</th>
+                    <th>Notes</th>
+                </tr>
+                </thead>
+                <tbody id="reservationsTableBody">
+                <tr>
+                    <td colspan="5">No class selected.</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script src="../../js/api.js"></script>
+<script src="../../js/navbar.js"></script>
+<script src="../../js/dashboard.js"></script>
+<script src="../../js/admin/class-sessions.js"></script>
+</body>
+</html>
